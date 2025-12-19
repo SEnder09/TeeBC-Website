@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - TeeBC</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .about-page {
+            padding: 100px 0 40px;
+            background: var(--bg-color);
+        }
+
+        .about-hero {
+            text-align: center;
+            padding: 4rem 0;
+            margin-bottom: 4rem;
+        }
+
+        .about-hero h1 {
+            font-size: 3rem;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+        }
+
+        .about-hero p {
+            font-size: 1.5rem;
+            color: var(--text-light);
+        }
+
+        .about-section {
+            padding: 3rem 0;
+            border-bottom: 1px solid var(--accent-color);
+        }
+
+        .about-section:last-child {
+            border-bottom: none;
+        }
+
+        .about-section h2 {
+            font-size: 2.5rem;
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .values-list, .features-list {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+        }
+
+        .values-list li, .features-list li {
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(166, 141, 96, 0.3);
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        .values-list li:last-child, .features-list li:last-child {
+            border-bottom: none;
+        }
+
+        .values-list li strong, .features-list li strong {
+            color: var(--text-color);
+            font-size: 1.2rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-info {
+            background: rgba(143, 166, 166, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 2px solid var(--accent-color);
+            margin-top: 2rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-info a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: var(--secondary-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-brand">
+                <img src="img/logo.png" alt="TeeBC Logo" class="nav-logo"> TeeBC
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="#" id="cart-link">Cart <span class="cart-count">0</span></a></li>
+                <li><a href="login.html" id="login-link">Login/Register</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- About Page Content -->
+    <div class="about-page">
+        <div class="container">
+            <!-- Hero Section -->
+            <div class="about-hero">
+                <h1>More Than Just T-Shirts - We're Storytellers</h1>
+                <p>At TeeBC, we celebrate the pop culture moments that define our generation.</p>
+            </div>
+
+            <!-- Our Story Section -->
+            <div class="about-section">
+                <h2>Our Story</h2>
+                <p>
+                    TeeBC was born from a simple idea: that our favorite movies, TV shows, anime, and memes deserve to be celebrated beyond the screen. Founded in 2025, we set out to create a platform where pop culture enthusiasts could find high-quality, officially licensed T-shirts featuring the iconic quotes, characters, and moments they love.
+                </p>
+                <p>
+                    Our name, 'Tee Be Continued,' reflects our commitment to keeping these cultural touchpoints alive and relevant. Each design tells a story, sparks nostalgia, and connects like-minded fans across the globe.
+                </p>
+            </div>
+
+            <!-- Our Mission Section -->
+            <div class="about-section">
+                <h2>Our Mission</h2>
+                <p>
+                    To transform everyday apparel into canvases for pop culture expression, creating wearable art that sparks conversation, builds community, and celebrates the stories that shape our lives.
+                </p>
+            </div>
+
+            <!-- What Makes Us Different Section -->
+            <div class="about-section">
+                <h2>Why Choose TeeBC?</h2>
+                <ul class="features-list">
+                    <li>
+                        <strong>Curated Collections</strong>
+                        We carefully select and design each T-shirt to ensure it represents the most iconic and beloved elements of pop culture
+                    </li>
+                    <li>
+                        <strong>Premium Quality</strong>
+                        All our shirts are made from high-quality, comfortable materials that maintain their shape and design through countless wears and washes
+                    </li>
+                    <li>
+                        <strong>Official Licensing</strong>
+                        We partner with content creators and studios to ensure our designs are officially licensed and support the original artists
+                    </li>
+                    <li>
+                        <strong>Community Focused</strong>
+                        We're not just selling T-shirts - we're building a community of pop culture enthusiasts who share our passion
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Our Values Section -->
+            <div class="about-section">
+                <h2>Our Values</h2>
+                <ul class="values-list">
+                    <li>
+                        <strong>Authenticity</strong>
+                        We stay true to the original spirit of the content we celebrate
+                    </li>
+                    <li>
+                        <strong>Creativity</strong>
+                        Our designs push boundaries while respecting source material
+                    </li>
+                    <li>
+                        <strong>Quality</strong>
+                        We never compromise on materials or printing techniques
+                    </li>
+                    <li>
+                        <strong>Community</strong>
+                        We listen to our customers and incorporate their feedback
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Team Section -->
+            <div class="about-section">
+                <h2>Meet Our Team</h2>
+                <p>
+                    While TeeBC may have started as a solo project, our vision has always been collaborative. We work with talented designers, pop culture experts, and dedicated customer service professionals who share our passion for bringing fans the apparel they'll love.
+                </p>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="about-section">
+                <h2>Get In Touch</h2>
+                <p>
+                    We'd love to hear from you! Whether you have design suggestions, partnership inquiries, or just want to share your favorite pop culture moment, reach out to us:
+                </p>
+                <div class="contact-info">
+                    <p><strong>Email:</strong> <a href="mailto:hello@teebc.com">hello@teebc.com</a></p>
+                    <p><strong>Phone:</strong> +852 12345678</p>
+                    <p><strong>Customer Service Hours:</strong> Monday-Friday, 9AM-6PM</p>
+                    <p><strong>Visit Us:</strong> <a href="contact.html">Contact Page</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>TeeBC</h3>
+                    <p>Your one-stop shop for all your favorite products</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Email: info@teebc.com</p>
+                    <p>Phone: +852 12345678</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 TeeBC. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h2>Shopping Cart</h2>
+            <button class="close-cart" id="close-cart">&times;</button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <p class="empty-cart">Your cart is empty</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <strong>Total: $<span id="cart-total">0.00</span></strong>
+            </div>
+            <button class="btn btn-primary btn-block">Checkout</button>
+        </div>
+    </div>
+    <div class="cart-overlay" id="cart-overlay"></div>
+
+    <script src="js/auth-manager.js"></script>
+    <script src="js/nav-manager.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

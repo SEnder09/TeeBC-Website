@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - TeeBC</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .contact-page {
+            padding: 100px 0 40px;
+            background: var(--bg-color);
+        }
+
+        .contact-hero {
+            text-align: center;
+            padding: 2rem 0 4rem;
+        }
+
+        .contact-hero h1 {
+            font-size: 3rem;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+        }
+
+        .contact-hero p {
+            font-size: 1.25rem;
+            color: var(--text-light);
+        }
+
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info-section {
+            background: rgba(143, 166, 166, 0.1);
+            padding: 2.5rem;
+            border-radius: 15px;
+            border: 2px solid var(--accent-color);
+            height: fit-content;
+        }
+
+        .contact-info-section h2 {
+            font-size: 2rem;
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info-section p {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .contact-info-section strong {
+            color: var(--text-color);
+        }
+
+        .contact-info-section a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info-section a:hover {
+            color: var(--secondary-color);
+        }
+
+        .contact-details {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--accent-color);
+        }
+
+        .contact-details-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-details-item h3 {
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .contact-details-item p {
+            color: var(--text-light);
+            margin: 0;
+        }
+
+        .contact-form-section {
+            background: rgba(143, 166, 166, 0.1);
+            padding: 2.5rem;
+            border-radius: 15px;
+            border: 2px solid var(--accent-color);
+        }
+
+        .contact-form-section h2 {
+            font-size: 2rem;
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            color: var(--text-color);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            padding: 12px 15px;
+            border: 1px solid var(--accent-color);
+            background: rgba(143, 166, 166, 0.2);
+            color: var(--text-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: 'Helvetica', 'Helvetica Neue', Arial, sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            background: rgba(143, 166, 166, 0.3);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: var(--text-light);
+            opacity: 0.7;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .error-message {
+            color: #ff6b6b;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        .form-group.error input,
+        .form-group.error textarea,
+        .form-group.error select {
+            border-color: #ff6b6b;
+        }
+
+        .success-message {
+            background: rgba(76, 175, 80, 0.2);
+            border: 1px solid #4caf50;
+            color: #4caf50;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            display: none;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        .submit-button {
+            padding: 14px;
+            background: var(--primary-color);
+            color: var(--bg-color);
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Helvetica', 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        .submit-button:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .submit-button:active {
+            transform: translateY(0);
+        }
+
+        @media (max-width: 968px) {
+            .contact-layout {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-brand">
+                <img src="img/logo.png" alt="TeeBC Logo" class="nav-logo"> TeeBC
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="#" id="cart-link">Cart <span class="cart-count">0</span></a></li>
+                <li><a href="login.html" id="login-link">Login/Register</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Contact Page Content -->
+    <div class="contact-page">
+        <div class="container">
+            <!-- Hero Section -->
+            <div class="contact-hero">
+                <h1>Contact Us</h1>
+                <p>We'd love to hear from you! Get in touch with our team.</p>
+            </div>
+
+            <div class="contact-layout">
+                <!-- Contact Information -->
+                <div class="contact-info-section">
+                    <h2>Get In Touch</h2>
+                    <p>
+                        Whether you have design suggestions, partnership inquiries, or just want to share your favorite pop culture moment, we're here to help!
+                    </p>
+
+                    <div class="contact-details">
+                        <div class="contact-details-item">
+                            <h3>Email</h3>
+                            <p>
+                                <a href="mailto:hello@teebc.com">hello@teebc.com</a><br>
+                                <a href="mailto:info@teebc.com">info@teebc.com</a>
+                            </p>
+                        </div>
+
+                        <div class="contact-details-item">
+                            <h3>Phone</h3>
+                            <p>+852 12345678</p>
+                        </div>
+
+                        <div class="contact-details-item">
+                            <h3>Customer Service Hours</h3>
+                            <p>Monday - Friday: 9AM - 6PM<br>Saturday - Sunday: Closed</p>
+                        </div>
+
+                        <div class="contact-details-item">
+                            <h3>Response Time</h3>
+                            <p>We typically respond within 24-48 hours during business days.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form-section">
+                    <h2>Send Us a Message</h2>
+
+                    <div class="success-message" id="success-message">
+                        Thank you for your message! We'll get back to you soon.
+                    </div>
+
+                    <form class="contact-form" id="contact-form">
+                        <div class="form-group" id="name-group">
+                            <label for="name">Full Name *</label>
+                            <input 
+                                type="text" 
+                                id="name" 
+                                name="name" 
+                                placeholder="Enter your full name"
+                                required
+                            >
+                            <span class="error-message" id="name-error"></span>
+                        </div>
+
+                        <div class="form-group" id="email-group">
+                            <label for="email">Email *</label>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                placeholder="Enter your email"
+                                required
+                            >
+                            <span class="error-message" id="email-error"></span>
+                        </div>
+
+                        <div class="form-group" id="subject-group">
+                            <label for="subject">Subject *</label>
+                            <select id="subject" name="subject" required>
+                                <option value="">Select a subject</option>
+                                <option value="general">General Inquiry</option>
+                                <option value="order">Order Question</option>
+                                <option value="design">Design Suggestion</option>
+                                <option value="partnership">Partnership Inquiry</option>
+                                <option value="support">Customer Support</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <span class="error-message" id="subject-error"></span>
+                        </div>
+
+                        <div class="form-group" id="message-group">
+                            <label for="message">Message *</label>
+                            <textarea 
+                                id="message" 
+                                name="message" 
+                                placeholder="Tell us how we can help you..."
+                                required
+                            ></textarea>
+                            <span class="error-message" id="message-error"></span>
+                        </div>
+
+                        <button type="submit" class="submit-button">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>TeeBC</h3>
+                    <p>Your one-stop shop for all your favorite products</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Email: info@teebc.com</p>
+                    <p>Phone: +852 12345678</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 TeeBC. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h2>Shopping Cart</h2>
+            <button class="close-cart" id="close-cart">&times;</button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <p class="empty-cart">Your cart is empty</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <strong>Total: $<span id="cart-total">0.00</span></strong>
+            </div>
+            <button class="btn btn-primary btn-block">Checkout</button>
+        </div>
+    </div>
+    <div class="cart-overlay" id="cart-overlay"></div>
+
+    <script src="js/auth-manager.js"></script>
+    <script src="js/nav-manager.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Contact form validation and submission
+        const contactForm = document.getElementById('contact-form');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const subjectInput = document.getElementById('subject');
+        const messageInput = document.getElementById('message');
+        
+        const nameError = document.getElementById('name-error');
+        const emailError = document.getElementById('email-error');
+        const subjectError = document.getElementById('subject-error');
+        const messageError = document.getElementById('message-error');
+        
+        const nameGroup = document.getElementById('name-group');
+        const emailGroup = document.getElementById('email-group');
+        const subjectGroup = document.getElementById('subject-group');
+        const messageGroup = document.getElementById('message-group');
+        const successMessage = document.getElementById('success-message');
+
+        function validateEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function showError(group, errorElement, message) {
+            group.classList.add('error');
+            errorElement.textContent = message;
+            errorElement.classList.add('show');
+        }
+
+        function clearError(group, errorElement) {
+            group.classList.remove('error');
+            errorElement.textContent = '';
+            errorElement.classList.remove('show');
+        }
+
+        // Name validation
+        nameInput.addEventListener('blur', function() {
+            const value = this.value.trim();
+            if (value && value.length < 2) {
+                showError(nameGroup, nameError, 'Name must be at least 2 characters');
+            } else {
+                clearError(nameGroup, nameError);
+            }
+        });
+
+        // Email validation
+        emailInput.addEventListener('blur', function() {
+            const value = this.value.trim();
+            if (value && !validateEmail(value)) {
+                showError(emailGroup, emailError, 'Please enter a valid email address');
+            } else {
+                clearError(emailGroup, emailError);
+            }
+        });
+
+        // Message validation
+        messageInput.addEventListener('blur', function() {
+            const value = this.value.trim();
+            if (value && value.length < 10) {
+                showError(messageGroup, messageError, 'Message must be at least 10 characters');
+            } else {
+                clearError(messageGroup, messageError);
+            }
+        });
+
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            let isValid = true;
+            const nameValue = nameInput.value.trim();
+            const emailValue = emailInput.value.trim();
+            const subjectValue = subjectInput.value;
+            const messageValue = messageInput.value.trim();
+
+            // Clear previous errors
+            clearError(nameGroup, nameError);
+            clearError(emailGroup, emailError);
+            clearError(subjectGroup, subjectError);
+            clearError(messageGroup, messageError);
+
+            // Validate name
+            if (!nameValue) {
+                showError(nameGroup, nameError, 'Name is required');
+                isValid = false;
+            } else if (nameValue.length < 2) {
+                showError(nameGroup, nameError, 'Name must be at least 2 characters');
+                isValid = false;
+            }
+
+            // Validate email
+            if (!emailValue) {
+                showError(emailGroup, emailError, 'Email is required');
+                isValid = false;
+            } else if (!validateEmail(emailValue)) {
+                showError(emailGroup, emailError, 'Please enter a valid email address');
+                isValid = false;
+            }
+
+            // Validate subject
+            if (!subjectValue) {
+                showError(subjectGroup, subjectError, 'Please select a subject');
+                isValid = false;
+            }
+
+            // Validate message
+            if (!messageValue) {
+                showError(messageGroup, messageError, 'Message is required');
+                isValid = false;
+            } else if (messageValue.length < 10) {
+                showError(messageGroup, messageError, 'Message must be at least 10 characters');
+                isValid = false;
+            }
+
+            if (isValid) {
+                // Simulate form submission
+                console.log('Contact form submitted:', { 
+                    name: nameValue, 
+                    email: emailValue,
+                    subject: subjectValue,
+                    message: messageValue
+                });
+                
+                // Show success message
+                successMessage.classList.add('show');
+                
+                // Reset form
+                contactForm.reset();
+                
+                // Hide success message after 5 seconds
+                setTimeout(function() {
+                    successMessage.classList.remove('show');
+                }, 5000);
+            }
+        });
+    </script>
+</body>
+</html>

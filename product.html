@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - TeeBC</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-brand">
+                <img src="img/logo.png" alt="TeeBC Logo" class="nav-logo"> TeeBC
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="#" id="cart-link">Cart <span class="cart-count">0</span></a></li>
+                <li><a href="login.html" id="login-link">Login/Register</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Product Detail Page -->
+    <div class="product-detail-page">
+        <div class="container">
+            <div class="product-detail-layout">
+                <!-- Image Gallery -->
+                <div class="product-gallery">
+                    <div class="main-image">
+                        <img id="main-product-image" src="img/Anime_T.png" alt="Product Image">
+                    </div>
+                    <div class="thumbnail-images">
+                        <img src="https://via.placeholder.com/100x100" alt="Thumbnail 1" class="thumbnail active" data-image="https://via.placeholder.com/600x600">
+                        <!-- <img src="img/Anime_T.png" alt="Thumbnail 1" class="thumbnail active" data-image="https://via.placeholder.com/600x600">
+                        <img src="img/Anime_T_2.png" alt="Thumbnail 2" class="thumbnail" data-image="https://via.placeholder.com/600x600?text=Image+2">
+                        <img src="img/Anime_T_3.png" alt="Thumbnail 3" class="thumbnail" data-image="https://via.placeholder.com/600x600?text=Image+3">
+                        <img src="img/Anime_T_4.png" alt="Thumbnail 4" class="thumbnail" data-image="https://via.placeholder.com/600x600?text=Image+4"> -->
+                        <img src="https://via.placeholder.com/100x100?text=2" alt="Thumbnail 2" class="thumbnail" data-image="https://via.placeholder.com/600x600?text=Image+2">
+                        <img src="https://via.placeholder.com/100x100?text=3" alt="Thumbnail 3" class="thumbnail" data-image="https://via.placeholder.com/600x600?text=Image+3">
+                        <img src="https://via.placeholder.com/100x100?text=4" alt="Thumbnail 4" class="thumbnail" data-image="https://via.placeholder.com/600x600?text=Image+4">
+                    </div>
+                </div>
+
+                <!-- Product Information -->
+                <div class="product-info">
+                    <h1 id="product-title">Product Title</h1>
+                    <div class="product-price">
+                        <span class="current-price" id="product-price">$29.99</span>
+                        <span class="original-price" id="original-price">$39.99</span>
+                    </div>
+                    <div class="product-description" id="product-description">
+                        <p>This is a detailed description of the product. It includes all the features, specifications, and benefits that make this product special and worth purchasing.</p>
+                    </div>
+
+                    <!-- Size Selector -->
+                    <div class="product-options">
+                        <label>Size:</label>
+                        <div class="size-selector">
+                            <button class="size-option active" data-size="S">S</button>
+                            <button class="size-option" data-size="M">M</button>
+                            <button class="size-option" data-size="L">L</button>
+                            <button class="size-option" data-size="XL">XL</button>
+                        </div>
+                    </div>
+
+                    <!-- Color Selector -->
+                    <div class="product-options" id="color-selector-container" style="display: none;">
+                        <label>Color:</label>
+                        <div class="color-selector" id="color-selector">
+                            <!-- Color options will be dynamically generated -->
+                        </div>
+                    </div>
+
+                    <!-- Quantity Selector -->
+                    <div class="product-options">
+                        <label>Quantity:</label>
+                        <div class="quantity-selector">
+                            <button class="qty-btn" id="decrease-qty">-</button>
+                            <input type="number" id="quantity" value="1" min="1" max="10">
+                            <button class="qty-btn" id="increase-qty">+</button>
+                        </div>
+                    </div>
+
+                    <!-- Add to Cart Button -->
+                    <button class="btn btn-primary btn-large" id="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Related Products -->
+            <section class="related-products">
+                <h2 class="section-title">Related Products</h2>
+                <div class="products-grid" id="related-products">
+                    <!-- Related products will be dynamically loaded -->
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>TeeBC</h3>
+                    <p>Your one-stop shop for all your favorite products</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Email: info@teebc.com</p>
+                    <p>Phone: +852 12345678</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 TeeBC. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h2>Shopping Cart</h2>
+            <button class="close-cart" id="close-cart">&times;</button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <p class="empty-cart">Your cart is empty</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <strong>Total: $<span id="cart-total">0.00</span></strong>
+            </div>
+            <button class="btn btn-primary btn-block">Checkout</button>
+        </div>
+    </div>
+    <div class="cart-overlay" id="cart-overlay"></div>
+
+    <script src="js/auth-manager.js"></script>
+    <script src="js/nav-manager.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

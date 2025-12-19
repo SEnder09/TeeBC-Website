@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - TeeBC</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .auth-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 20px 40px;
+            background: var(--bg-color);
+        }
+
+        .auth-container {
+            background: rgba(143, 166, 166, 0.1);
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow-lg);
+            width: 100%;
+            max-width: 450px;
+            border: 2px solid var(--accent-color);
+        }
+
+        .auth-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .auth-header h1 {
+            font-size: 2.5rem;
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .auth-header p {
+            color: var(--text-light);
+        }
+
+        .auth-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            color: var(--text-color);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .form-group input {
+            padding: 12px 15px;
+            border: 1px solid var(--accent-color);
+            background: rgba(143, 166, 166, 0.2);
+            color: var(--text-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: 'Helvetica', 'Helvetica Neue', Arial, sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            background: rgba(143, 166, 166, 0.3);
+        }
+
+        .form-group input::placeholder {
+            color: var(--text-light);
+            opacity: 0.7;
+        }
+
+        .error-message {
+            color: #ff6b6b;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        .form-group.error input {
+            border-color: #ff6b6b;
+        }
+
+        .password-strength {
+            font-size: 0.75rem;
+            margin-top: 0.25rem;
+            color: var(--text-light);
+        }
+
+        .password-strength.weak {
+            color: #ff6b6b;
+        }
+
+        .password-strength.medium {
+            color: #ffa500;
+        }
+
+        .password-strength.strong {
+            color: #4caf50;
+        }
+
+        .auth-button {
+            padding: 14px;
+            background: var(--primary-color);
+            color: var(--bg-color);
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Helvetica', 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        .auth-button:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .auth-button:active {
+            transform: translateY(0);
+        }
+
+        .auth-footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--accent-color);
+        }
+
+        .auth-footer p {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .auth-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .auth-link:hover {
+            color: var(--secondary-color);
+        }
+
+        .success-message {
+            background: rgba(76, 175, 80, 0.2);
+            border: 1px solid #4caf50;
+            color: #4caf50;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            display: none;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-brand">
+                <img src="img/logo.png" alt="TeeBC Logo" class="nav-logo"> TeeBC
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="#" id="cart-link">Cart <span class="cart-count">0</span></a></li>
+                <li><a href="login.html" class="active">Login/Register</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Register Page -->
+    <div class="auth-page">
+        <div class="auth-container">
+            <div class="auth-header">
+                <h1>Register</h1>
+                <p>Create a new account to start shopping!</p>
+            </div>
+
+            <form class="auth-form" id="register-form">
+                <div class="form-group" id="name-group">
+                    <label for="name">Full Name</label>
+                    <input 
+                        type="text" 
+                        id="name" 
+                        name="name" 
+                        placeholder="Enter your full name"
+                        required
+                    >
+                    <span class="error-message" id="name-error"></span>
+                </div>
+
+                <div class="form-group" id="email-group">
+                    <label for="email">Email</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        placeholder="Enter your email"
+                        required
+                    >
+                    <span class="error-message" id="email-error"></span>
+                </div>
+
+                <div class="form-group" id="password-group">
+                    <label for="password">Password</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        placeholder="Create a password"
+                        required
+                    >
+                    <span class="error-message" id="password-error"></span>
+                    <span class="password-strength" id="password-strength"></span>
+                </div>
+
+                <div class="form-group" id="confirm-password-group">
+                    <label for="confirm-password">Confirm Password</label>
+                    <input 
+                        type="password" 
+                        id="confirm-password" 
+                        name="confirm-password" 
+                        placeholder="Confirm your password"
+                        required
+                    >
+                    <span class="error-message" id="confirm-password-error"></span>
+                </div>
+
+                <button type="submit" class="auth-button">Register</button>
+            </form>
+
+            <div class="auth-footer">
+                <p>Already have an account? <a href="login.html" class="auth-link">Login here</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/auth-manager.js"></script>
+    <script src="js/nav-manager.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Registration form validation and submission
+        const registerForm = document.getElementById('register-form');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const confirmPasswordInput = document.getElementById('confirm-password');
+        
+        const nameError = document.getElementById('name-error');
+        const emailError = document.getElementById('email-error');
+        const passwordError = document.getElementById('password-error');
+        const confirmPasswordError = document.getElementById('confirm-password-error');
+        const passwordStrength = document.getElementById('password-strength');
+        
+        const nameGroup = document.getElementById('name-group');
+        const emailGroup = document.getElementById('email-group');
+        const passwordGroup = document.getElementById('password-group');
+        const confirmPasswordGroup = document.getElementById('confirm-password-group');
+
+        function validateEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function checkPasswordStrength(password) {
+            let strength = 0;
+            let feedback = '';
+
+            if (password.length >= 8) strength++;
+            if (password.length >= 12) strength++;
+            if (/[a-z]/.test(password) && /[A-Z]/.test(password)) strength++;
+            if (/\d/.test(password)) strength++;
+            if (/[^a-zA-Z0-9]/.test(password)) strength++;
+
+            if (strength <= 2) {
+                feedback = 'Weak password';
+                return { level: 'weak', feedback };
+            } else if (strength <= 3) {
+                feedback = 'Medium password';
+                return { level: 'medium', feedback };
+            } else {
+                feedback = 'Strong password';
+                return { level: 'strong', feedback };
+            }
+        }
+
+        function showError(group, errorElement, message) {
+            group.classList.add('error');
+            errorElement.textContent = message;
+            errorElement.classList.add('show');
+        }
+
+        function clearError(group, errorElement) {
+            group.classList.remove('error');
+            errorElement.textContent = '';
+            errorElement.classList.remove('show');
+        }
+
+        // Name validation
+        nameInput.addEventListener('blur', function() {
+            const value = this.value.trim();
+            if (value && value.length < 2) {
+                showError(nameGroup, nameError, 'Name must be at least 2 characters');
+            } else {
+                clearError(nameGroup, nameError);
+            }
+        });
+
+        // Email validation
+        emailInput.addEventListener('blur', function() {
+            const value = this.value.trim();
+            if (value && !validateEmail(value)) {
+                showError(emailGroup, emailError, 'Please enter a valid email address');
+            } else {
+                clearError(emailGroup, emailError);
+            }
+        });
+
+        // Password strength check
+        passwordInput.addEventListener('input', function() {
+            const value = this.value;
+            if (value) {
+                const strength = checkPasswordStrength(value);
+                passwordStrength.textContent = strength.feedback;
+                passwordStrength.className = 'password-strength ' + strength.level;
+            } else {
+                passwordStrength.textContent = '';
+                passwordStrength.className = 'password-strength';
+            }
+        });
+
+        // Password validation
+        passwordInput.addEventListener('blur', function() {
+            const value = this.value;
+            if (value && value.length < 6) {
+                showError(passwordGroup, passwordError, 'Password must be at least 6 characters');
+            } else {
+                clearError(passwordGroup, passwordError);
+            }
+        });
+
+        // Confirm password validation
+        confirmPasswordInput.addEventListener('blur', function() {
+            const value = this.value;
+            const passwordValue = passwordInput.value;
+            if (value && value !== passwordValue) {
+                showError(confirmPasswordGroup, confirmPasswordError, 'Passwords do not match');
+            } else {
+                clearError(confirmPasswordGroup, confirmPasswordError);
+            }
+        });
+
+        // Real-time confirm password check
+        confirmPasswordInput.addEventListener('input', function() {
+            const value = this.value;
+            const passwordValue = passwordInput.value;
+            if (value && value !== passwordValue) {
+                showError(confirmPasswordGroup, confirmPasswordError, 'Passwords do not match');
+            } else {
+                clearError(confirmPasswordGroup, confirmPasswordError);
+            }
+        });
+
+        registerForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            let isValid = true;
+            const nameValue = nameInput.value.trim();
+            const emailValue = emailInput.value.trim();
+            const passwordValue = passwordInput.value;
+            const confirmPasswordValue = confirmPasswordInput.value;
+
+            // Clear previous errors
+            clearError(nameGroup, nameError);
+            clearError(emailGroup, emailError);
+            clearError(passwordGroup, passwordError);
+            clearError(confirmPasswordGroup, confirmPasswordError);
+
+            // Validate name
+            if (!nameValue) {
+                showError(nameGroup, nameError, 'Name is required');
+                isValid = false;
+            } else if (nameValue.length < 2) {
+                showError(nameGroup, nameError, 'Name must be at least 2 characters');
+                isValid = false;
+            }
+
+            // Validate email
+            if (!emailValue) {
+                showError(emailGroup, emailError, 'Email is required');
+                isValid = false;
+            } else if (!validateEmail(emailValue)) {
+                showError(emailGroup, emailError, 'Please enter a valid email address');
+                isValid = false;
+            }
+
+            // Validate password
+            if (!passwordValue) {
+                showError(passwordGroup, passwordError, 'Password is required');
+                isValid = false;
+            } else if (passwordValue.length < 6) {
+                showError(passwordGroup, passwordError, 'Password must be at least 6 characters');
+                isValid = false;
+            }
+
+            // Validate confirm password
+            if (!confirmPasswordValue) {
+                showError(confirmPasswordGroup, confirmPasswordError, 'Please confirm your password');
+                isValid = false;
+            } else if (confirmPasswordValue !== passwordValue) {
+                showError(confirmPasswordGroup, confirmPasswordError, 'Passwords do not match');
+                isValid = false;
+            }
+
+            if (isValid) {
+                // Simulate registration success
+                // In a real application, this would make an API call
+                console.log('Registration successful:', { 
+                    name: nameValue, 
+                    email: emailValue 
+                });
+                
+                // Store user data
+                const users = JSON.parse(localStorage.getItem('users')) || [];
+                const newUser = {
+                    email: emailValue,
+                    name: nameValue,
+                    password: passwordValue, // In real app, this would be hashed
+                    registeredDate: new Date().toISOString(),
+                    shippingAddresses: [],
+                    defaultAddressId: null
+                };
+                
+                // Check if user already exists
+                const existingUser = users.find(u => u.email === emailValue);
+                if (!existingUser) {
+                    users.push(newUser);
+                    localStorage.setItem('users', JSON.stringify(users));
+                }
+                
+                // Set current user and log them in
+                if (typeof setCurrentUser === 'function') {
+                    setCurrentUser(newUser);
+                } else {
+                    localStorage.setItem('currentUser', JSON.stringify(newUser));
+                    localStorage.setItem('isLoggedIn', 'true');
+                }
+                
+                // Redirect to login page with success message (or directly to home)
+                window.location.href = 'login.html?registered=true';
+            }
+        });
+    </script>
+</body>
+</html>
